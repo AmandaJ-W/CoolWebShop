@@ -2,7 +2,8 @@
   <div id="app" v-on:click="clearMessage">
     <div id="fixed-container">
     <header>
-      <img src="img/SSGeek.png" />
+      <!-- <img src="img/BlackNWhiteSSGeekLogo.png" /> -->
+      <img :src="logoSrc" />
     </header>
     <nav>
       <div id="left-side">
@@ -32,6 +33,11 @@
 </template>
 <script>
 export default {
+  data () {
+    return {
+      logoSrc: "img/BlackNWhiteSSGeekLogo.png"
+    };
+  },
   computed: {
     message() {
       return this.$store.state.message;
@@ -62,6 +68,10 @@ html {
   }
   header > img {
     max-height: 68px;
+    transition: transform 0.5s ease;
+  }
+  header > img:hover {
+    transform: scale(1.1);
   }
   #fixed-container {
    grid-area: fixed-container;

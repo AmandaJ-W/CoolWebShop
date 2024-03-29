@@ -4,7 +4,7 @@
       <div class="sku"><p>{{ product.productSku }}</p></div>
       <div class="price"><p>{{ formatCurrency(product.price) }}</p></div>
       <div class="product-name"><router-link class="detail-link" :to="{ name: 'product-details', params: { productId: product.productId }}">{{ product.name }}</router-link></div>
-      <div class="product-image"><img src="/img/product_350x250.jpg"/></div>
+      <div class="product-image"><img :src="productSrc"/></div>
       <div class="cart" v-on:click="addToCart(product)">
         <font-awesome-icon icon="fa-solid fa-cart-plus" class="add-cart" v-if="isLoggedIn" />
       </div>
@@ -16,6 +16,11 @@
 import CartService from '../services/CartService.js';
 
 export default {
+  data () {
+    return {
+      productSrc: '/img/box.jpg'
+    }
+  },
   props: {
     displayedProducts: {
       type: Array,
